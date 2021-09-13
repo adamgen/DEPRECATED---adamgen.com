@@ -6,7 +6,7 @@ import Avatar from './avatar.png';
 const Home: NextPage = () => {
     return (
         <div>
-            <div className="max-w-3xl m-auto p-6 flex justify-between font-sans font-light items-center">
+            <div className="max-w-3xl m-auto p-6 flex justify-between font-sans font-light items-center flex-col sm:flex-row">
                 <Link href="/">
                     <a className="font-normal text-lg flex items-center">
                         <Image width={80} height={80} src={Avatar} />
