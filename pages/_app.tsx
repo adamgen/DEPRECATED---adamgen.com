@@ -3,10 +3,10 @@ import type { AppProps } from 'next/app';
 import '../styles/globals.css';
 import { Navbar } from '../components/Navbar';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps, router }: AppProps) {
     return (
         <>
-            <Navbar />
+            <Navbar isHome={router.route === '/'} />
             <Component {...pageProps} />
         </>
     );
