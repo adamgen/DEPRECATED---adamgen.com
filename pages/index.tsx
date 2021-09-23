@@ -3,16 +3,12 @@ import styled from 'styled-components';
 
 import Svg from './wave.svg';
 
-const Home: NextPage = () => {
+const Home: NextPage<{ homeColor: string }> = ({ homeColor }) => {
     return (
         <div>
-            <Wave />
+            <Svg className={`text-${homeColor}`} />
         </div>
     );
 };
 
 export default Home;
-
-const Wave = styled(Svg)`
-    color: #000;
-`;

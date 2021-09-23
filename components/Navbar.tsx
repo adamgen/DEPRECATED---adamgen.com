@@ -4,9 +4,12 @@ import classNames from 'classnames';
 
 import Avatar from '../pages/avatar.png';
 
-export const Navbar: React.FC<{ isHome: boolean }> = ({ isHome }) => {
+export const Navbar: React.FC<{ isHome: boolean; homeColor: string }> = ({
+    isHome,
+    homeColor,
+}) => {
     return (
-        <div className={classNames({ 'bg-black text-white': isHome })}>
+        <div className={classNames({ [`bg-${homeColor} text-white`]: isHome })}>
             <div
                 className={classNames(
                     'max-w-3xl m-auto p-6 flex justify-between font-sans font-light items-center flex-col sm:flex-row',
