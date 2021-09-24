@@ -14,12 +14,14 @@ export const Navbar: React.FC<{ isHome: boolean; homeColor: string }> = ({
             <div
                 className={classNames(
                     twPageContainer,
-                    'p-6 flex justify-between font-light items-center flex-col sm:flex-row',
+                    'py-6 flex justify-between font-light items-center flex-col sm:flex-row',
                 )}
             >
                 <Link href="/">
                     <a className="font-normal text-lg flex items-center">
-                        <Image width={80} height={80} src={Avatar} />
+                        <div className={'mr-2 inline-block'}>
+                            <Image width={60} height={60} src={Avatar} />
+                        </div>
                         Adam Genshaft
                     </a>
                 </Link>
