@@ -7,10 +7,10 @@ function MyApp({ Component, pageProps, router }: AppProps) {
     const homeColor = 'indigo-900';
 
     return (
-        <>
+        <div className={'font-sans'}>
             <Navbar isHome={router.route === '/'} homeColor={homeColor} />
             <Component {...pageProps} homeColor={homeColor} />
-        </>
+        </div>
     );
 }
 export default MyApp;
