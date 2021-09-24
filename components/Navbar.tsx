@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import classNames from 'classnames';
 
-import Avatar from '../pages/avatar.png';
+import Avatar from '../public/avatar.png';
 
 export const Navbar: React.FC<{ isHome: boolean; homeColor: string }> = ({
     isHome,
