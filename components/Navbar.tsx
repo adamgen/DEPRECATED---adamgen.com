@@ -3,6 +3,7 @@ import Image from 'next/image';
 import classNames from 'classnames';
 
 import Avatar from '../public/avatar.png';
+import { twPageContainer } from '../utils/tailwind-mixins';
 
 export const Navbar: React.FC<{ isHome: boolean; homeColor: string }> = ({
     isHome,
@@ -12,7 +13,8 @@ export const Navbar: React.FC<{ isHome: boolean; homeColor: string }> = ({
         <div className={classNames({ [`bg-${homeColor} text-white`]: isHome })}>
             <div
                 className={classNames(
-                    'max-w-3xl m-auto p-6 flex justify-between font-light items-center flex-col sm:flex-row',
+                    twPageContainer,
+                    'p-6 flex justify-between font-light items-center flex-col sm:flex-row',
                 )}
             >
                 <Link href="/">
