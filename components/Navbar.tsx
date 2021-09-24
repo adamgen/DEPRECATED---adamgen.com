@@ -10,7 +10,11 @@ export const Navbar: React.FC<{ isHome: boolean; homeColor: string }> = ({
     homeColor,
 }) => {
     return (
-        <div className={classNames({ [`bg-${homeColor} text-white`]: isHome })}>
+        <div
+            className={classNames({
+                [`bg-${homeColor} text-white`]: false && isHome,
+            })}
+        >
             <div
                 className={classNames(
                     twPageContainer,
