@@ -37,27 +37,30 @@ const Home: NextPage<{ homeColor: string }> = ({ homeColor }) => {
                     </p>
                 </div>
             </div>
-
-            <Services className={'w-screen flex relative'}>
-                <div
-                    className={
-                        'absolute top-0 right-1/2 transform translate-x-1/2 '
-                    }
-                >
-                    <PeaksLeft className={'text-red-300'} />
-                    <PeaksRight className={'absolute top-0 text-blue-700'} />
-                </div>
-                <PeaksDown className={'w-full h-auto absolute top-0'} />
-                <SingleService className={'w-1/2 bg-blue-700 h-screen'} />
-                <SingleService className={'w-1/2 bg-red-300 h-screen'} />
-            </Services>
+            <Services />
         </div>
     );
 };
 
 export default Home;
 
-const Services = styled.div``;
+const Services = () => {
+    return (
+        <div className={'w-screen flex relative'}>
+            <div
+                className={
+                    'absolute top-0 right-1/2 transform translate-x-1/2 '
+                }
+            >
+                <PeaksLeft className={'text-red-300'} />
+                <PeaksRight className={'absolute top-0 text-blue-700'} />
+            </div>
+            <PeaksDown className={'w-full h-auto absolute top-0'} />
+            <SingleService className={'w-1/2 bg-blue-700 h-screen'} />
+            <SingleService className={'w-1/2 bg-red-300 h-screen'} />
+        </div>
+    );
+};
 
 const SingleService = styled.div`
     padding-top: 6vw;
