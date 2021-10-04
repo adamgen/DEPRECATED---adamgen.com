@@ -1,12 +1,16 @@
 import { NextPage } from 'next';
 
 import classNames from 'classnames';
-import { twPageContainer } from '../utils/tailwind-mixins';
 import React from 'react';
 
 const Home: NextPage<{ homeColor: string }> = ({ homeColor }) => {
     return (
-        <div className={classNames(twPageContainer, 'text-3xl font-light')}>
+        <div
+            className={classNames(
+                'max-w-3xl m-auto px-4 md:px-0',
+                'text-3xl font-light',
+            )}
+        >
             <p className={'mb-6 font-bold'}>Hi, I’m Adam 👋🏼</p>
 
             <p className={'mb-6'}>
@@ -73,6 +77,7 @@ interface BlogPostProps {
     subtitle: string;
     link: string;
 }
+
 const BlogPost: React.FC<BlogPostProps> = ({ title, subtitle, link }) => {
     return (
         <div className={'text-lg mb-10'}>
