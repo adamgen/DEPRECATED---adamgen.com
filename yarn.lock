@@ -1324,6 +1324,29 @@
   resolved "https://registry.npmjs.org/@request/interface/-/interface-0.1.0.tgz"
   integrity sha1-yRNQTT3CgQr61VW1ma6uwsxMZ2g=
 
+"@sendgrid/client@^7.4.7":
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/@sendgrid/client/-/client-7.6.0.tgz#f90cb8759c96e1d90224f29ad98f8fdc2be287f3"
+  integrity sha512-cpBVZKLlMTO+vpE18krTixubYmZa98oTbLkqBDuTiA3zRkW+urrxg7pDR24TkI35Mid0Zru8jDHwnOiqrXu0TA==
+  dependencies:
+    "@sendgrid/helpers" "^7.6.0"
+    axios "^0.21.4"
+
+"@sendgrid/helpers@^7.4.6", "@sendgrid/helpers@^7.6.0":
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/@sendgrid/helpers/-/helpers-7.6.0.tgz#b381bfab391bcd66c771811b22bb6bb2d5c1dfc6"
+  integrity sha512-0uWD+HSXLl4Z/X3cN+UMQC20RE7xwAACgppnfjDyvKG0KvJcUgDGz7HDdQkiMUdcVWfmyk6zKSg7XKfKzBjTwA==
+  dependencies:
+    deepmerge "^4.2.2"
+
+"@sendgrid/mail@7.4.7":
+  version "7.4.7"
+  resolved "https://registry.yarnpkg.com/@sendgrid/mail/-/mail-7.4.7.tgz#cc8f77ec27443e02e7be1df01bf0899434155804"
+  integrity sha512-lGfXJBEx7PMQje/NsVsebF6MdP2ptHWjmuI4YANjReAQlIGq3Cqm4JLP5Fb4n5Bbr1LXLCM7R0gJo+/PT6ENKw==
+  dependencies:
+    "@sendgrid/client" "^7.4.7"
+    "@sendgrid/helpers" "^7.4.6"
+
 "@sentry/core@6.3.0":
   version "6.3.0"
   resolved "https://registry.npmjs.org/@sentry/core/-/core-6.3.0.tgz"
@@ -1718,6 +1741,14 @@
     request "^2.83.0"
     url-join "4.0.1"
     uuid "^3.1.0"
+
+"@strapi/provider-email-sendgrid@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@strapi/provider-email-sendgrid/-/provider-email-sendgrid-4.0.2.tgz#8a5b24c04dd65b9e9ca58d86ae87b9fd7cd55d57"
+  integrity sha512-kfFue1PP1Aqt/6Dlh6yIJ6/1dOdXYpK9CE2sf3AAH4ynMj6Yaa0BDY2pO3JEBcFhZxvXifbEZUTimmnaktB47A==
+  dependencies:
+    "@sendgrid/mail" "7.4.7"
+    "@strapi/utils" "4.0.2"
 
 "@strapi/provider-email-sendmail@4.0.2":
   version "4.0.2"
@@ -2453,6 +2484,13 @@ axios@0.24.0:
   integrity sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA==
   dependencies:
     follow-redirects "^1.14.4"
+
+axios@^0.21.4:
+  version "0.21.4"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.4.tgz#c67b90dc0568e5c1cf2b0b858c43ba28e2eda575"
+  integrity sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==
+  dependencies:
+    follow-redirects "^1.14.0"
 
 babel-loader@8.2.2:
   version "8.2.2"
@@ -4530,7 +4568,7 @@ fn.name@1.x.x:
   resolved "https://registry.npmjs.org/fn.name/-/fn.name-1.1.0.tgz"
   integrity sha512-GRnmB5gPyJpAhTQdSZTSp9uaPSvl09KoYcMQtsB9rQoOmzs9dH6ffeccH+Z+cv6P68Hu5bC6JjRh4Ah/mHSNRw==
 
-follow-redirects@^1.0.0, follow-redirects@^1.14.4:
+follow-redirects@^1.0.0, follow-redirects@^1.14.0, follow-redirects@^1.14.4:
   version "1.14.6"
   resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.6.tgz"
   integrity sha512-fhUl5EwSJbbl8AR+uYL2KQDxLkdSjZGR36xy46AO7cOMTrCMON6Sa28FmAnC2tRTDbd/Uuzz3aJBv7EBN7JH8A==
