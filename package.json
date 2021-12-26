@@ -2,22 +2,22 @@
   "name": "adamgen-blog",
   "private": true,
   "version": "0.1.0",
-  "description": "A Strapi application",
+  "description": "adamgen.com blog",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "devDependencies": {},
   "dependencies": {
-    "@strapi/strapi": "4.0.2",
-    "@strapi/plugin-users-permissions": "4.0.2",
     "@strapi/plugin-i18n": "4.0.2",
+    "@strapi/plugin-users-permissions": "4.0.2",
+    "@strapi/strapi": "4.0.2",
+    "pg": "^8.7.1",
     "sqlite3": "5.0.2"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "Adam Genshaft"
   },
   "strapi": {
     "uuid": "e0d72b62-637c-496a-b46f-7c4283a4c9d9"
