@@ -1,5 +1,6 @@
 import { DocumentNode } from 'graphql';
 import QUERY from './query.gql';
+import { Posts } from './__generated__/Posts';
 
 async function fetchAPI<T>(
     query: DocumentNode,
@@ -54,7 +55,7 @@ async function fetchAPI<T>(
 // }
 
 export async function getAllPostsForHome(preview: boolean) {
-    const data = await fetchAPI<any>(QUERY, {
+    const data = await fetchAPI<Posts>(QUERY, {
         variables: {
             where: {
                 ...(preview ? {} : { status: 'published' }),
