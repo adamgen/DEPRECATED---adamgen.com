@@ -1,12 +1,13 @@
-query Posts {
-    articles {
+query Posts($slug: String) {
+    articles(filters: { slug: { eq: $slug } }) {
         data {
             id
             attributes {
-                title
                 content
                 createdAt
                 description
+                slug
+                title
                 category {
                     data {
                         id

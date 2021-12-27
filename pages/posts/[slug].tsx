@@ -1,10 +1,11 @@
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
-import { getAllPostsWithSlug, getPostAndMorePosts } from '@/lib/api';
 import Head from 'next/head';
 import { parseMd } from '../../lib/parse-md';
+import { getAllPostsWithSlug, getPostAndMorePosts } from '../../lib/api';
+import { GetStaticProps } from 'next';
 
-export default function Post({ post, morePosts, preview }) {
+export default function Post({ post }) {
     const router = useRouter();
     if (!router.isFallback && !post?.slug) {
         return <ErrorPage statusCode={404} />;
@@ -24,9 +25,7 @@ export default function Post({ post, morePosts, preview }) {
                                     content={post.ogImage.url}
                                 />
                             </Head>
-                            <div>
-                                {post.title}
-                            </div>
+                            <div>{post.title}</div>
                             <div>{post.content}</div>
                         </article>
                     </>
@@ -36,24 +35,28 @@ export default function Post({ post, morePosts, preview }) {
     );
 }
 
-export async function getStaticProps({ params, preview = null }) {
-    const data = await getPostAndMorePosts(params.slug, preview);
-    const content = await parseMd(data?.posts[0]?.content || '');
+export const getStaticProps: GetStaticProps = async ({
+    params,
+    preview = false,
+}) => {
+    const data = await getPostAndMorePosts(params?.slug as string, preview);
+    const content = await parseMd(
+        data?.articles?.data[0].attributes?.content || '',
+    );
 
     return {
         props: {
             preview,
             post: {
-                ...data?.posts[0],
                 content,
             },
-            morePosts: data?.morePosts,
         },
     };
-}
+};
 
 export async function getStaticPaths() {
     const allPosts = await getAllPostsWithSlug();
+
     return {
         paths: allPosts?.map((post) => `/posts/${post.slug}`) || [],
         fallback: true,

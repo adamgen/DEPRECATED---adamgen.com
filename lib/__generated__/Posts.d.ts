@@ -43,10 +43,11 @@ export interface Posts_articles_data_attributes_category {
 
 export interface Posts_articles_data_attributes {
   __typename: "Article";
-  title: string;
   content: string;
   createdAt: any | null;
   description: string;
+  slug: string;
+  title: string;
   category: Posts_articles_data_attributes_category | null;
 }
 
@@ -63,4 +64,8 @@ export interface Posts_articles {
 
 export interface Posts {
   articles: Posts_articles | null;
+}
+
+export interface PostsVariables {
+  slug?: string | null;
 }

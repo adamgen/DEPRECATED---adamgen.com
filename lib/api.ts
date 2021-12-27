@@ -49,10 +49,14 @@ async function fetchAPI<T>(
 //     return data?.posts[0];
 // }
 //
-// export async function getAllPostsWithSlug() {
-//     const data = await fetchAPI<{ posts: { slug: string }[] }>(gql``);
-//     return data?.posts;
-// }
+export async function getAllPostsWithSlug() {
+    const data = await fetchAPI<{ posts: { slug: string }[] }>(QUERY, {
+        variables: {
+            slug: 'the-future-of-blogs',
+        },
+    });
+    return data?.posts;
+}
 
 export function getAllPostsForHome(preview: boolean) {
     return fetchAPI<Posts>(QUERY, {
@@ -64,32 +68,12 @@ export function getAllPostsForHome(preview: boolean) {
     });
 }
 
-// export async function getPostAndMorePosts(slug: string, preview: boolean) {
-//     const data = await fetchAPI(
-//         gql`
-//             query PostBySlug {
-//                 article {
-//                     data {
-//                         attributes {
-//                             title
-//                         }
-//                     }
-//                 }
-//             }
-//         `,
-//         {
-//             preview,
-//             variables: {
-//                 where: {
-//                     slug,
-//                     ...(preview ? {} : { status: 'published' }),
-//                 },
-//                 where_ne: {
-//                     ...(preview ? {} : { status: 'published' }),
-//                     slug_ne: slug,
-//                 },
-//             },
-//         },
-//     );
-//     return data;
-// }
+export async function getPostAndMorePosts(slug: string, preview: boolean) {
+    const data = await fetchAPI<Posts>(QUERY, {
+        preview,
+        variables: {
+            slug: 'the-future-of-blogs',
+        },
+    });
+    return data;
+}

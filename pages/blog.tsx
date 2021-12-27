@@ -1,4 +1,5 @@
 import { NextPage } from 'next';
+import Link from 'next/link';
 import { getAllPostsForHome } from '../lib/api';
 import classNames from 'classnames';
 import { Posts } from '../lib/__generated__/Posts';
@@ -17,7 +18,9 @@ const Blog: NextPage<{ posts: Posts }> = ({ posts }) => {
                 return (
                     article.attributes && (
                         <div key={article.id}>
-                            <div>{article.attributes.title}</div>
+                            <Link href={`/posts/${article.attributes.slug}`}>
+                                {article.attributes.title}
+                            </Link>
                             <div>{excerpt}</div>
                         </div>
                     )
