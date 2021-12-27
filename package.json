@@ -10,7 +10,8 @@
         "lint": "next lint",
         "format": "prettier --write --config .prettierrc.json ./**/*.{js,ts,tsx,css,md,json} --ignore-path=.gitignore",
         "prepare": "husky install",
-        "gql-get-schema": "apollo client:download-schema --endpoint=http://localhost:1337/graphql schema.gql"
+        "gql-get-schema": "apollo client:download-schema --endpoint=http://localhost:1337/graphql schema.gql",
+        "gql-codegen": "apollo client:codegen --target=typescript --localSchemaFile=schema.gql --tagName=gql --includes=lib/query.gql"
     },
     "dependencies": {
         "@svgr/webpack": "^5.5.0",
