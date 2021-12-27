@@ -1,7 +1,9 @@
 query Posts {
     articles {
         data {
+            id
             attributes {
+                title
                 content
                 createdAt
                 description

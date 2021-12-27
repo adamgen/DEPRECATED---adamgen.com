@@ -43,6 +43,7 @@ export interface Posts_articles_data_attributes_category {
 
 export interface Posts_articles_data_attributes {
   __typename: "Article";
+  title: string;
   content: string;
   createdAt: any | null;
   description: string;
@@ -51,6 +52,7 @@ export interface Posts_articles_data_attributes {
 
 export interface Posts_articles_data {
   __typename: "ArticleEntity";
+  id: string | null;
   attributes: Posts_articles_data_attributes | null;
 }
 

@@ -54,15 +54,14 @@ async function fetchAPI<T>(
 //     return data?.posts;
 // }
 
-export async function getAllPostsForHome(preview: boolean) {
-    const data = await fetchAPI<Posts>(QUERY, {
+export function getAllPostsForHome(preview: boolean) {
+    return fetchAPI<Posts>(QUERY, {
         variables: {
             where: {
                 ...(preview ? {} : { status: 'published' }),
             },
         },
     });
-    return data;
 }
 
 // export async function getPostAndMorePosts(slug: string, preview: boolean) {
