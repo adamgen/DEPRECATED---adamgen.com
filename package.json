@@ -5,8 +5,8 @@
   "description": "adamgen.com blog",
   "scripts": {
     "develop": "strapi develop",
-    "start": "is-ci serve develop",
-    "serve": "is-ci && strapi start",
+    "start": "is-ci-cli serve develop",
+    "serve": "strapi start",
     "build": "strapi build",
     "strapi": "strapi"
   },
