@@ -5,7 +5,8 @@
   "description": "adamgen.com blog",
   "scripts": {
     "develop": "strapi develop",
-    "start": "strapi start",
+    "start": "is-ci serve develop",
+    "serve": "is-ci && strapi start",
     "build": "strapi build",
     "strapi": "strapi"
   },
@@ -14,6 +15,7 @@
     "@strapi/plugin-users-permissions": "4.0.2",
     "@strapi/provider-email-sendgrid": "^4.0.2",
     "@strapi/strapi": "4.0.2",
+    "is-ci-cli": "^2.2.0",
     "pg": "^8.7.1",
     "sqlite3": "5.0.2"
   },
