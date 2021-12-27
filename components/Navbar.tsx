@@ -34,7 +34,7 @@ export const Navbar: React.FC<{ isHome: boolean; homeColor: string }> = ({
                 <Link href="/">
                     <a>Hire Consulting</a>
                 </Link>
-                <Link href="/">
+                <Link href="/blog">
                     <a>Blog</a>
                 </Link>
                 <Link href="/">

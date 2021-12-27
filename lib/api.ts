@@ -1,17 +1,19 @@
-async function fetchAPI(query, { variables } = {}): Promise<unknown> {
-    const res = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/graphql`,
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                query,
-                variables,
-            }),
+import gql from 'graphql-tag';
+
+async function fetchAPI<T>(
+    query: string,
+    { variables }: { variables?: any; preview?: boolean } = {},
+): Promise<null | T> {
+    const res = await fetch(`http://strapi.adamgen.com/graphql`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
         },
-    );
+        body: JSON.stringify({
+            query,
+            variables,
+        }),
+    });
 
     const json = await res.json();
     if (json.errors) {
@@ -22,8 +24,8 @@ async function fetchAPI(query, { variables } = {}): Promise<unknown> {
     return json.data;
 }
 
-export async function getPreviewPostBySlug(slug) {
-    const data = await fetchAPI(
+export async function getPreviewPostBySlug(slug: string) {
+    const data = await fetchAPI<{ posts: { slug: string }[] }>(
         `
   query PostBySlug($where: JSON) {
     posts(where: $where) {
@@ -43,37 +45,49 @@ export async function getPreviewPostBySlug(slug) {
 }
 
 export async function getAllPostsWithSlug() {
-    const data = fetchAPI(`
+    const data = await fetchAPI<{ posts: { slug: string }[] }>(`
     {
       posts {
         slug
       }
     }
   `);
-    return data?.allPosts;
+    return data?.posts;
 }
 
-export async function getAllPostsForHome(preview) {
-    const data = await fetchAPI(
-        `
-    query Posts($where: JSON){
-      posts(sort: "date:desc", limit: 10, where: $where) {
-        title
-        slug
-        excerpt
-        date
-        coverImage {
-          url
-        }
-        author {
-          name
-          picture {
-            url
-          }
-        }
-      }
-    }
-  `,
+export async function getAllPostsForHome(preview: boolean) {
+    const data = await fetchAPI<any>(
+        gql`
+            query Posts {
+                articles {
+                    data {
+                        attributes {
+                            content
+                            createdAt
+                            description
+                            category {
+                                data {
+                                    id
+                                    attributes {
+                                        createdAt
+                                        name
+                                        articles {
+                                            data {
+                                                attributes {
+                                                    title
+                                                    slug
+                                                }
+                                            }
+                                        }
+                                        createdAt
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        `,
         {
             variables: {
                 where: {
@@ -82,10 +96,10 @@ export async function getAllPostsForHome(preview) {
             },
         },
     );
-    return data?.posts;
+    return data;
 }
 
-export async function getPostAndMorePosts(slug, preview) {
+export async function getPostAndMorePosts(slug: string, preview: boolean) {
     const data = await fetchAPI(
         `
   query PostBySlug($where: JSON, $where_ne: JSON) {
