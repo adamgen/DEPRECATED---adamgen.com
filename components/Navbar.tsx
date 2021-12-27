@@ -4,16 +4,9 @@ import classNames from 'classnames';
 
 import Avatar from '../public/avatar.png';
 
-export const Navbar: React.FC<{ isHome: boolean; homeColor: string }> = ({
-    isHome,
-    homeColor,
-}) => {
+export const Navbar: React.FC = ({}) => {
     return (
-        <div
-            className={classNames({
-                [`bg-${homeColor} text-white`]: false && isHome,
-            })}
-        >
+        <div>
             <div
                 className={classNames(
                     'max-w-3xl m-auto px-4 md:px-0',
@@ -23,7 +16,12 @@ export const Navbar: React.FC<{ isHome: boolean; homeColor: string }> = ({
                 <Link href="/">
                     <a className="font-normal text-lg flex items-center">
                         <div className={'mr-2 inline-block'}>
-                            <Image width={60} height={60} src={Avatar} />
+                            <Image
+                                width={60}
+                                height={60}
+                                src={Avatar}
+                                alt={'Adam Genshaft logo'}
+                            />
                         </div>
                         Adam Genshaft
                     </a>
