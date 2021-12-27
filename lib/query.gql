@@ -1,0 +1,29 @@
+query Posts {
+    articles {
+        data {
+            attributes {
+                content
+                createdAt
+                description
+                category {
+                    data {
+                        id
+                        attributes {
+                            createdAt
+                            name
+                            articles {
+                                data {
+                                    attributes {
+                                        title
+                                        slug
+                                    }
+                                }
+                            }
+                            createdAt
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
