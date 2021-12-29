@@ -5,6 +5,7 @@
   "author": "Adam <adamgensh@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "start": "lerna run start --stream",
     "validate:format": "lerna run validate:check --stream"
   },
   "dependencies": {

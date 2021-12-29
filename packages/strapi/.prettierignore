@@ -1,1 +1,8 @@
 package-lock.json
+build
+.env
+license.txt
+exports
+*.cache
+build
+.strapi-updater.json
