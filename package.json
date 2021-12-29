@@ -4,9 +4,7 @@
   "main": "index.js",
   "author": "Adam <adamgensh@gmail.com>",
   "license": "MIT",
-  "scripts": {
-
-  },
+  "scripts": {},
   "dependencies": {
     "lerna": "^4.0.0"
   }
