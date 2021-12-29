@@ -7,7 +7,7 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "format": "prettier --write --config .prettierrc.json ./**/*.{js,ts,tsx,css,md,json} --ignore-path=.gitignore"
+        "validate:check": "prettier --check --config ../strapi/.prettierrc.json ./**/*.{js,ts,tsx,css,md,json} --ignore-path=.gitignore"
     },
     "dependencies": {
         "@svgr/webpack": "^5.5.0",
