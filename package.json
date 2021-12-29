@@ -1,0 +1,13 @@
+{
+  "name": "adamgen.com",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Adam <adamgensh@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+
+  },
+  "dependencies": {
+    "lerna": "^4.0.0"
+  }
+}
