@@ -47,9 +47,13 @@ export const Post: NextPage<{ post: Posts_articles_data_attributes }> = ({
     const imageFormats = post.author?.data?.attributes?.picture?.data
         ?.attributes?.formats as ImageFormats;
     const imageUrl = imageFormats?.thumbnail?.url;
-    const date = formatDistance(new Date(post.createdAt), new Date(), {
+    const timeAgo = formatDistance(new Date(post.createdAt), new Date(), {
         addSuffix: true,
     });
+    const publishTime = format(
+        new Date(post.createdAt),
+        "HH:mm 'on' dd/MM/yyy",
+    );
     const authorName = post.author?.data?.attributes?.name;
 
     return (
@@ -72,7 +76,7 @@ export const Post: NextPage<{ post: Posts_articles_data_attributes }> = ({
                                 height={'50px'}
                             />
                         </div>
-                        Posted {date} by {authorName}
+                        Posted {timeAgo} by {authorName} at {publishTime}
                     </div>
                 </>
             )}
