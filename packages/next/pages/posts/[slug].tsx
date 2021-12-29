@@ -2,31 +2,27 @@ import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import { parseMd } from '../../lib/parse-md';
 import { getAllPostsWithSlug, getPostAndMorePosts } from '../../lib/api';
-import {GetStaticProps, NextPage} from 'next';
+import { GetStaticProps, NextPage } from 'next';
 
-export const  Post: NextPage<{post:{content: string}}> = ({ post }) => {
+export const Post: NextPage<{ post: { content: string } }> = ({ post }) => {
     const router = useRouter();
-    if (!router.isFallback) {
+    if (!router.isFallback && !post.content) {
         return <ErrorPage statusCode={404} />;
     }
     return (
         <div>
-            <div>
-                {router.isFallback ? (
-                    <div>Loading…</div>
-                ) : (
-                    <>
-                        <article>
-                            <div>{post.content}</div>
-                        </article>
-                    </>
-                )}
-            </div>
+            {router.isFallback ? (
+                <div>Loading…</div>
+            ) : (
+                <>
+                    <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                </>
+            )}
         </div>
     );
-}
+};
 
-export default Post
+export default Post;
 
 export const getStaticProps: GetStaticProps = async ({
     params,
