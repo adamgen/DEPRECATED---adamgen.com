@@ -59,13 +59,3 @@ export function getAllPostsForHome(preview: boolean) {
         },
     });
 }
-
-export async function getPostAndMorePosts(slug: string, preview: boolean) {
-    const data = await fetchAPI<Posts>(QUERY, {
-        preview,
-        variables: {
-            slug: 'the-future-of-blogs',
-        },
-    });
-    return data;
-}

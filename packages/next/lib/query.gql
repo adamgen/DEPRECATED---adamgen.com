@@ -8,6 +8,20 @@ query Posts($slug: String) {
                 description
                 slug
                 title
+                author {
+                    data {
+                        attributes {
+                            name
+                            picture {
+                                data {
+                                    attributes {
+                                        formats
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
                 category {
                     data {
                         id

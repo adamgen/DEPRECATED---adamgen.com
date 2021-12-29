@@ -7,6 +7,37 @@
 // GraphQL query operation: Posts
 // ====================================================
 
+export interface Posts_articles_data_attributes_author_data_attributes_picture_data_attributes {
+    __typename: 'UploadFile';
+    formats: any | null;
+}
+
+export interface Posts_articles_data_attributes_author_data_attributes_picture_data {
+    __typename: 'UploadFileEntity';
+    attributes: Posts_articles_data_attributes_author_data_attributes_picture_data_attributes | null;
+}
+
+export interface Posts_articles_data_attributes_author_data_attributes_picture {
+    __typename: 'UploadFileEntityResponse';
+    data: Posts_articles_data_attributes_author_data_attributes_picture_data | null;
+}
+
+export interface Posts_articles_data_attributes_author_data_attributes {
+    __typename: 'Writer';
+    name: string | null;
+    picture: Posts_articles_data_attributes_author_data_attributes_picture | null;
+}
+
+export interface Posts_articles_data_attributes_author_data {
+    __typename: 'WriterEntity';
+    attributes: Posts_articles_data_attributes_author_data_attributes | null;
+}
+
+export interface Posts_articles_data_attributes_author {
+    __typename: 'WriterEntityResponse';
+    data: Posts_articles_data_attributes_author_data | null;
+}
+
 export interface Posts_articles_data_attributes_category_data_attributes_articles_data_attributes {
     __typename: 'Article';
     title: string;
@@ -48,6 +79,7 @@ export interface Posts_articles_data_attributes {
     description: string;
     slug: string;
     title: string;
+    author: Posts_articles_data_attributes_author | null;
     category: Posts_articles_data_attributes_category | null;
 }
 
