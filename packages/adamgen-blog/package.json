@@ -1,0 +1,35 @@
+{
+  "name": "adamgen-blog",
+  "private": true,
+  "version": "0.1.0",
+  "description": "adamgen.com blog",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "is-ci-cli serve develop",
+    "serve": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "dependencies": {
+    "@strapi/plugin-graphql": "4.0.2",
+    "@strapi/plugin-i18n": "4.0.2",
+    "@strapi/plugin-users-permissions": "4.0.2",
+    "@strapi/provider-email-sendgrid": "^4.0.2",
+    "@strapi/provider-upload-cloudinary": "^4.0.2",
+    "@strapi/strapi": "4.0.2",
+    "is-ci-cli": "^2.2.0",
+    "pg": "^8.7.1",
+    "sqlite3": "5.0.2"
+  },
+  "author": {
+    "name": "Adam Genshaft"
+  },
+  "strapi": {
+    "uuid": "e0d72b62-637c-496a-b46f-7c4283a4c9d9"
+  },
+  "engines": {
+    "node": ">=12.x.x <=16.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}
