@@ -1,9 +1,12 @@
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import { parseMd } from '../../lib/parse-md';
-import { getAllPostsWithSlug, getPostAndMorePosts } from '../../lib/api';
+import { fetchAPI, getPostAndMorePosts } from '../../lib/api';
 import { GetStaticProps, NextPage } from 'next';
 import classNames from 'classnames';
+import styled from 'styled-components';
+import { Posts } from '../../lib/__generated__/Posts';
+import QUERY from '../../lib/query.gql';
 
 export const Post: NextPage<{ post: { content: string } }> = ({ post }) => {
     const router = useRouter();
@@ -15,7 +18,7 @@ export const Post: NextPage<{ post: { content: string } }> = ({ post }) => {
             {router.isFallback ? (
                 <div>Loading…</div>
             ) : (
-                <div
+                <Content
                     className={classNames('max-w-3xl m-auto px-4 md:px-0')}
                     dangerouslySetInnerHTML={{ __html: post.content }}
                 />
@@ -46,10 +49,21 @@ export const getStaticProps: GetStaticProps = async ({
 };
 
 export async function getStaticPaths() {
-    const allPosts = await getAllPostsWithSlug();
+    const response = await fetchAPI<Posts>(QUERY, {});
+    const paths =
+        response?.articles?.data.map(
+            (post) => `/posts/${post.attributes?.slug}`,
+        ) || [];
 
     return {
-        paths: allPosts?.map((post) => `/posts/${post.slug}`) || [],
-        fallback: true,
+        paths,
+        fallback: false,
     };
 }
+
+const Content = styled.div`
+    p {
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+    }
+`;
