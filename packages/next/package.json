@@ -8,7 +8,7 @@
         "start": "is-ci-cli serve dev",
         "serve": "next start",
         "lint": "next lint",
-        "prettier": "prettier --config .prettierrc.json ./**/*.{js,ts,tsx,css,md,json}",
+        "prettier": "prettier --config .prettierrc.json './**/{*,\\[*\\]}.{js,ts,tsx,css,md,json}'",
         "format": "npm run prettier -- --write",
         "validate:check": "npm run prettier -- --check",
         "gql-get-schema": "apollo client:download-schema --endpoint=http://localhost:1337/graphql schema.gql",
