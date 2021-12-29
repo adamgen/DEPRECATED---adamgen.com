@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 
     return (
         <div className={'font-sans'}>
-            <Navbar isHome={router.route === '/'} homeColor={homeColor} />
+            <Navbar />
             <Component {...pageProps} homeColor={homeColor} />
         </div>
     );
