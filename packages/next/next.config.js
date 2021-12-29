@@ -17,6 +17,10 @@ module.exports = {
                 },
             ],
         });
+        config.module.rules.push({
+            test: /\.gql$/,
+            use: 'raw-loader',
+        });
 
         return config;
     },

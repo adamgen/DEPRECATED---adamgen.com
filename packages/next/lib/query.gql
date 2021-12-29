@@ -1,0 +1,32 @@
+query Posts($slug: String) {
+    articles(filters: { slug: { eq: $slug } }) {
+        data {
+            id
+            attributes {
+                content
+                createdAt
+                description
+                slug
+                title
+                category {
+                    data {
+                        id
+                        attributes {
+                            createdAt
+                            name
+                            articles {
+                                data {
+                                    attributes {
+                                        title
+                                        slug
+                                    }
+                                }
+                            }
+                            createdAt
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
