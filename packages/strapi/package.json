@@ -9,7 +9,9 @@
         "serve": "strapi start",
         "build": "strapi build",
         "strapi": "strapi",
-        "validate:check": "prettier --check --config .prettierrc.json ./**/*.{js,jsx,css,md,json} --ignore-path=.gitignore"
+        "prettier": "prettier --config .prettierrc.json ./**/*.{js,css,md,json}",
+        "format": "npm run prettier -- --write",
+        "validate:check": "npm run prettier -- --check"
     },
     "dependencies": {
         "@strapi/plugin-graphql": "4.0.2",

@@ -1,25 +1,23 @@
 {
-  "collectionName": "components_shared_seos",
-  "info": {
-    "name": "Seo",
-    "icon": "allergies"
-  },
-  "options": {},
-  "attributes": {
-    "metaTitle": {
-      "type": "string",
-      "required": true
+    "collectionName": "components_shared_seos",
+    "info": {
+        "name": "Seo",
+        "icon": "allergies"
     },
-    "metaDescription": {
-      "type": "text",
-      "required": true
-    },
-    "shareImage": {
-      "allowedTypes": [
-        "images"
-      ],
-      "type": "media",
-      "multiple": false
+    "options": {},
+    "attributes": {
+        "metaTitle": {
+            "type": "string",
+            "required": true
+        },
+        "metaDescription": {
+            "type": "text",
+            "required": true
+        },
+        "shareImage": {
+            "allowedTypes": ["images"],
+            "type": "media",
+            "multiple": false
+        }
     }
-  }
 }
