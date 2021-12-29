@@ -3,6 +3,7 @@ import ErrorPage from 'next/error';
 import { parseMd } from '../../lib/parse-md';
 import { getAllPostsWithSlug, getPostAndMorePosts } from '../../lib/api';
 import { GetStaticProps, NextPage } from 'next';
+import classNames from 'classnames';
 
 export const Post: NextPage<{ post: { content: string } }> = ({ post }) => {
     const router = useRouter();
@@ -14,9 +15,10 @@ export const Post: NextPage<{ post: { content: string } }> = ({ post }) => {
             {router.isFallback ? (
                 <div>Loading…</div>
             ) : (
-                <>
-                    <div dangerouslySetInnerHTML={{ __html: post.content }} />
-                </>
+                <div
+                    className={classNames('max-w-3xl m-auto px-4 md:px-0')}
+                    dangerouslySetInnerHTML={{ __html: post.content }}
+                />
             )}
         </div>
     );
