@@ -9,7 +9,7 @@
         "serve": "next start",
         "lint": "next lint",
         "format": "prettier --write --config .prettierrc.json ./**/*.{js,ts,tsx,css,md,json} --ignore-path=.gitignore",
-        "prepare": "husky install",
+        "prepare": "../../node_modules/.bin/husky install",
         "gql-get-schema": "apollo client:download-schema --endpoint=http://localhost:1337/graphql schema.gql",
         "gql-codegen": "apollo client:codegen --target=typescript --localSchemaFile=schema.gql --tagName=gql --includes=lib/query.gql --tsFileExtension=d.ts"
     },
