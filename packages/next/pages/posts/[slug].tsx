@@ -64,6 +64,5 @@ export async function getStaticPaths() {
 const Content = styled.div`
     p {
         margin-bottom: 1rem;
-        padding-left: 1rem;
     }
 `;
