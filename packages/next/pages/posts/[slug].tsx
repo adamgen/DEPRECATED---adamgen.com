@@ -128,4 +128,12 @@ const Content = styled.div`
     p {
         margin-bottom: 1rem;
     }
+    ol {
+        padding-left: 1rem;
+        list-style: auto;
+        margin-bottom: 1rem;
+    }
+    li {
+        margin-bottom: 0.25rem;
+    }
 `;
