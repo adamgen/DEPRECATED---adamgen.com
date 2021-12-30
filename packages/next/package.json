@@ -15,6 +15,7 @@
         "gql-codegen": "apollo client:codegen --target=typescript --localSchemaFile=schema.gql --tagName=gql --includes=lib/query.gql --tsFileExtension=d.ts"
     },
     "dependencies": {
+        "@appk/lib": "^0.0.0",
         "@svgr/webpack": "^5.5.0",
         "classnames": "^2.3.1",
         "date-fns": "^2.28.0",
