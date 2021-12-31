@@ -1,10 +1,13 @@
-import { NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
 import { getAllPostsForHome } from '../lib/api';
 import classNames from 'classnames';
 import { Posts } from '../lib/__generated__/Posts';
 
-const Blog: NextPage<{ posts: Posts }> = ({ posts }) => {
+const Blog: NextPage<{ posts: Posts; preview: boolean }> = ({
+    posts,
+    preview,
+}) => {
     return (
         <div className={classNames('max-w-3xl m-auto px-4 md:px-0')}>
             {posts.articles?.data.map((article) => {
@@ -17,10 +20,21 @@ const Blog: NextPage<{ posts: Posts }> = ({ posts }) => {
 
                 return (
                     article.attributes && (
-                        <div key={article.id}>
-                            <Link href={`/posts/${article.attributes.slug}`}>
-                                {article.attributes.title}
-                            </Link>
+                        <div
+                            key={article.id}
+                            className={classNames(
+                                'mb-4 pb-4 border-b last:border-b-0 last:mb-0 last:pb-0',
+                            )}
+                        >
+                            <div
+                                className={classNames('mb-2 text-lg underline')}
+                            >
+                                <Link
+                                    href={`/posts/${article.attributes.slug}`}
+                                >
+                                    {article.attributes.title}
+                                </Link>
+                            </div>
                             <div>{excerpt}</div>
                         </div>
                     )
@@ -32,10 +46,10 @@ const Blog: NextPage<{ posts: Posts }> = ({ posts }) => {
 
 export default Blog;
 
-export async function getStaticProps({ preview = false }) {
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     const posts = await getAllPostsForHome(preview);
 
     return {
         props: { posts, preview },
     };
-}
+};

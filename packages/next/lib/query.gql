@@ -1,5 +1,5 @@
-query Posts($slug: String) {
-    articles(filters: { slug: { eq: $slug } }) {
+query Posts($slug: String, $publicationState: PublicationState) {
+    articles(filters: { slug: { eq: $slug } }, publicationState: $publicationState) {
         data {
             id
             attributes {

@@ -6,12 +6,14 @@ import { fetchAPI } from '../../lib/api';
 import { GetStaticProps, NextPage } from 'next';
 import classNames from 'classnames';
 import styled from 'styled-components';
-import { format, formatDistance, formatRelative, subDays } from 'date-fns';
+import { format, formatDistance } from 'date-fns';
 import {
     Posts,
     Posts_articles_data_attributes,
+    PostsVariables,
 } from '../../lib/__generated__/Posts';
 import QUERY from '../../lib/query.gql';
+import { PublicationState } from '../../__generated__/globalTypes';
 
 export interface ImageFormat {
     ext: string;
@@ -90,21 +92,24 @@ export const getStaticProps: GetStaticProps = async ({
     params,
     preview = false,
 }) => {
-    const data = await fetchAPI<Posts>(QUERY, {
-        preview,
+    const data = await fetchAPI<Posts, PostsVariables>(QUERY, {
         variables: {
             slug: params?.slug as string,
+            publicationState: preview
+                ? PublicationState.PREVIEW
+                : PublicationState.LIVE,
         },
     });
     const content = await parseMd(
-        data?.articles?.data[0].attributes?.content || '',
+        data?.articles?.data[0]?.attributes?.content || '',
     );
+    console.log(data);
 
     return {
         props: {
             preview,
             post: {
-                ...data?.articles?.data[0].attributes,
+                ...data?.articles?.data[0]?.attributes,
                 content,
             },
         },
@@ -125,15 +130,41 @@ export async function getStaticPaths() {
 }
 
 const Content = styled.div`
-    p {
+    pre,
+    p,
+    ul,
+    ol,
+    h1,
+    h2,
+    h3 {
         margin-bottom: 1rem;
     }
+
+    ul {
+        padding-left: 1rem;
+        list-style: auto;
+    }
+
     ol {
         padding-left: 1rem;
         list-style: auto;
-        margin-bottom: 1rem;
     }
+
     li {
         margin-bottom: 0.25rem;
+    }
+
+    h1 {
+        font-size: x-large;
+    }
+
+    h2 {
+        font-size: large;
+    }
+
+    pre {
+        padding: 0.25rem;
+        background: lightgray;
+        overflow-y: scroll;
     }
 `;

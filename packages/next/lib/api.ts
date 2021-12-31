@@ -1,11 +1,12 @@
 import { DocumentNode } from 'graphql';
 import QUERY from './query.gql';
-import { Posts } from './__generated__/Posts';
+import { Posts, PostsVariables } from './__generated__/Posts';
+import { PublicationState } from '../__generated__/globalTypes';
 
-export async function fetchAPI<T>(
+export async function fetchAPI<Response, Variables = undefined>(
     query: DocumentNode,
-    { variables }: { variables?: any; preview?: boolean } = {},
-): Promise<null | T> {
+    { variables }: { variables?: Variables } = {},
+): Promise<null | Response> {
     const res = await fetch(`http://strapi.adamgen.com/graphql`, {
         method: 'POST',
         headers: {
@@ -51,11 +52,11 @@ export async function fetchAPI<T>(
 //
 
 export function getAllPostsForHome(preview: boolean) {
-    return fetchAPI<Posts>(QUERY, {
+    return fetchAPI<Posts, PostsVariables>(QUERY, {
         variables: {
-            where: {
-                ...(preview ? {} : { status: 'published' }),
-            },
+            publicationState: preview
+                ? PublicationState.PREVIEW
+                : PublicationState.LIVE,
         },
     });
 }

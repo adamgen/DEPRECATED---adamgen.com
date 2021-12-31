@@ -12,7 +12,7 @@
         "format": "npm run prettier -- --write",
         "validate:check": "npm run prettier -- --check",
         "gql-get-schema": "apollo client:download-schema --endpoint=http://localhost:1337/graphql schema.gql",
-        "gql-codegen": "apollo client:codegen --target=typescript --localSchemaFile=schema.gql --tagName=gql --includes=lib/query.gql --tsFileExtension=d.ts"
+        "gql-codegen": "apollo client:codegen --target=typescript --localSchemaFile=schema.gql --tagName=gql --includes=lib/query.gql"
     },
     "dependencies": {
         "@appk/lib": "^0.0.0",
