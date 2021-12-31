@@ -19,7 +19,6 @@ program
                 console.log(chalk.blue(`Deleting dir ${value}`))
                 fs.removeSync(value);
             });
-        // fs.removeSync()
     });
 
 program.parse();
